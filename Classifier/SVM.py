@@ -5,4 +5,3 @@ clf = svm.SVC()
 clf.fit(X, y)  
 print(clf.predict([[2., 2.]]))
 print(clf.support_vectors_)
-svm.
