@@ -6,10 +6,13 @@ discount = 0.3
 actions = World.actions
 states = []
 Q = {}
+
+# Creating cell states 5X5 grid
 for i in range(World.x):
     for j in range(World.y):
         states.append((i, j))
 
+# Updating all the cell scores in matrix as 0.1
 for state in states:
     temp = {}
     for action in actions:
@@ -17,6 +20,7 @@ for state in states:
         World.set_cell_score(state, action, temp[action])
     Q[state] = temp
 
+# Updating the cell score in red and green cells.
 for (i, j, c, w) in World.specials:
     for action in actions:
         Q[(i, j)][action] = w
@@ -75,7 +79,7 @@ def run():
         t += 1.0
         if World.has_restarted():
             World.restart_game()
-            time.sleep(0.01)
+            time.sleep(0.2)
             t = 1.0
 
         # Update the learning rate
